@@ -1,7 +1,5 @@
 package guru.springframework.domain;
 
-import com.sun.deploy.xml.GeneralEntity;
-
 import javax.persistence.*;
 
 @Entity
