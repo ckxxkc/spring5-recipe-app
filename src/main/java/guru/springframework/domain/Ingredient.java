@@ -2,8 +2,10 @@ package guru.springframework.domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Set;
 
+/**
+ * Created by jt on 6/13/17.
+ */
 @Entity
 public class Ingredient {
 
@@ -13,11 +15,11 @@ public class Ingredient {
     private String description;
     private BigDecimal amount;
 
-    @ManyToOne
-    private Receipe receipe;
-
     @OneToOne(fetch = FetchType.EAGER)
     private UnitOfMeasure uom;
+
+    @ManyToOne
+    private Recipe recipe;
 
     public Long getId() {
         return id;
@@ -43,8 +45,12 @@ public class Ingredient {
         this.amount = amount;
     }
 
-    public Receipe getReceipe() {
-        return receipe;
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
     }
 
     public UnitOfMeasure getUom() {
@@ -53,9 +59,5 @@ public class Ingredient {
 
     public void setUom(UnitOfMeasure uom) {
         this.uom = uom;
-    }
-
-    public void setReceipe(Receipe receipe) {
-        this.receipe = receipe;
     }
 }
